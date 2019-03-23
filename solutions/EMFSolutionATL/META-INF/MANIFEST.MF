@@ -13,7 +13,15 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.m2m.atl.emftvm,
  org.objectweb.asm,
  org.eclipse.m2m.atl.common,
- fr.eseo.atol.gen,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.m2m.atl.emftvm.compiler,
+ org.eclipse.m2m.atl.engine,
+ org.eclipse.m2m.atl.common,
+ org.eclipse.m2m.atl.dsls,
+ org.eclipse.m2m.atl.emftvm,
  EMFSolutionAOF
 Bundle-ActivationPolicy: lazy
 

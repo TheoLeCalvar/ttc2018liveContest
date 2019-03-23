@@ -14,9 +14,15 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- EMFSolutionTemplate;visibility:=reexport,
- fr.eseo.aof.language.core.emf,
- fr.eseo.aof.xtend.utils
+ EMFSolutionTemplate;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: ttc2018
+Export-Package: ttc2018;
+  uses:="org.eclipse.emf.ecore,
+   Changes,
+   org.eclipse.papyrus.aof.core,
+   SocialNetwork,
+   org.eclipse.papyrus.aof.core.impl.operation,
+   org.eclipse.papyrus.aof.core.impl.utils,
+   org.eclipse.xtext.xbase.lib,
+   org.eclipse.papyrus.aof.core.impl"
 
