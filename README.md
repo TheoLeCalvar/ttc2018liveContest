@@ -1,5 +1,15 @@
 # The TTC 2018 Social Media Case
 
+This repository is a fork of the original repository. It contains the most recent versions of the EMFSolutionAOF and EMFSolutionATL-Incremental solutions.
+
+The following results show that these solutions are well-positioned compared to the others.
+There were obtained by running the benchmark on a machine with
+- 2 x Intel® Xeon® X5670 - 2.93GHz 6-core
+- 12 x 16 GB PC3-8500 (DDR3-1066Mhz) Registered CAS-7
+
+![Initial time for Q1](diagrams/Q1-GroupBy-Tool-Time-Batch.png)
+![Update time for Q1](diagrams/Q1-GroupBy-Tool-Time-Updates.png)
+
 ## Case description
 
 The `docs/2018_TTC_Live.pdf` file contains the [case description](https://github.com/TransformationToolContest/ttc2018liveContest/raw/master/docs/2018_TTC_Live.pdf).
