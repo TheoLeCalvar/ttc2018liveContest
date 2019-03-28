@@ -44,6 +44,7 @@ savePlot <-function(results, settings, phases, fileName){
     scale_shape_manual(values=1:nlevels(data[[settings@group]])) +
     ylab(settings@yLabel) +
     ggtitle(label = settings@title) +
+    guides(shape = guide_legend(ncol = 4, byrow = FALSE)) +
     bwTheme
   
   if (settings@xAxis == "Continuous"){

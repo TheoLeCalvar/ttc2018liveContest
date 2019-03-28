@@ -1,4 +1,4 @@
-bwTheme <- theme(text=element_text(family="Helvetica", size=16),
+bwTheme <- theme(text=element_text(family="Helvetica", size=12),
                  panel.background = element_rect(fill="#FFFFFF"),
                  legend.position="bottom",
                  legend.direction="horizontal",
