@@ -1,0 +1,20 @@
+-- @atlcompiler emftvm
+-- @path SN=/socialmedia/social_network.ecore
+library Q2;
+
+helper context SN!SocialNetworkRoot def: topComments : Collection(String) =
+	self.allContents(SN!Comment)->sortedBy(e |
+		e.timestamp
+	)->sortedBy(e |
+		e.score
+	)->subSequence(1, 3)->collect(e | e.id);
+
+helper context SN!Comment def : score : Integer =
+	self.likedBy->connectedComponents(u |
+		u.friends->select(f |
+			f.likes->includes(self)
+		)
+	)->collect(e |
+		let size : Integer = e->size() in
+		size * size
+	)->sum();

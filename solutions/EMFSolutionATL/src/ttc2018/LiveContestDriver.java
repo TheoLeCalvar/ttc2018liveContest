@@ -102,7 +102,13 @@ public class LiveContestDriver {
         }
         else if (Query.contentEquals("Q2"))
         {
-            solution = new SolutionQ2();
+        	if(Tool.equals("EMFSolutionATL")) {
+        		solution = new SolutionQ2();
+        	} else if(Tool.equals("EMFSolutionATL-Incremental")){
+        		solution = new SolutionQ2ATOL();
+        	} else {
+        		throw new IllegalArgumentException("Unknown tool: " + Tool);
+        	}
         }
         else
         {
