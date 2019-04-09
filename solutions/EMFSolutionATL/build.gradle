@@ -38,12 +38,12 @@ configurations {
 
 		emftvm_compile('org.eclipse.m2m.atl:org.eclipse.m2m.atl.emftvm.ant.standalone:4.0.0-1')
 	}
-
 apply plugin: 'eclipse'
 apply plugin: 'java'
 apply plugin: 'application'
 
 apply plugin: 'java-library-distribution'
+
 
 xtend {
 	sourceSets {
@@ -73,13 +73,23 @@ sourceSets {
 	}
 }
 
-task compile {
+def compileATL(outputDir, module) {
+	ant.emftvm_compile(module: module, modulepath: 'src/ttc2018/', outputpath: "${outputDir}", charset: 'UTF-8')
+}
+
+
+task compileATL {
+	String outputDir = "${sourceSets.main.output.resourcesDir}/ttc2018/"
+	inputs.files('src/ttc2018/Q1.atl', 'src/ttc2018/Q2.atl')
+	outputs.files("${outputDir}/Q1.emftvm", "${outputDir}/Q2.emftvm")
 	doLast {
 		ant.taskdef(name: 'emftvm_compile',
 			classname: 'org.eclipse.m2m.atl.emftvm.ant.CompileTask',
 			classpath: configurations.emftvm_compile.asPath)
-		ant.emftvm_compile(module: 'Q1', modulepath: 'src/ttc2018/', outputpath: 'build/resources/main/ttc2018/', charset: 'UTF-8')
-		ant.emftvm_compile(module: 'Q2', modulepath: 'src/ttc2018/', outputpath: 'build/resources/main/ttc2018/', charset: 'UTF-8')
+		compileATL(outputDir, 'Q1')
+		compileATL(outputDir, 'Q2')
 	}
 }
+
+processResources.dependsOn(compileATL)
 
