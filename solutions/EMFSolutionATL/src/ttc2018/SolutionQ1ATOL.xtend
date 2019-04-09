@@ -4,7 +4,7 @@ import Changes.ModelChange
 import Changes.ModelChangeSet
 import org.eclipse.papyrus.aof.core.IBox
 
-public class SolutionQ1ATOL extends Solution {
+class SolutionQ1ATOL extends Solution {
 
 	var IBox<String> result
 

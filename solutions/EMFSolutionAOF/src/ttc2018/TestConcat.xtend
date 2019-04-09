@@ -1,7 +1,6 @@
 package ttc2018
 
 import org.eclipse.papyrus.aof.core.AOFFactory
-import org.eclipse.papyrus.aof.core.IBox
 
 class TestConcat {
 	def static createTestBox(int base) {
