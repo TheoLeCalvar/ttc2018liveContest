@@ -2,6 +2,7 @@ package ttc2018
 
 import fr.eseo.atol.gen.ATOLGen
 import fr.eseo.atol.gen.ATOLGen.Metamodel
+import java.util.HashMap
 import org.eclipse.papyrus.aof.core.IBox
 import org.eclipse.papyrus.aof.core.IUnaryFunction
 
@@ -15,8 +16,11 @@ class Q2 implements AOFExtensions {
 		new ConnectedComponents(it, accessor).result
 	}
 
+	val includesCache = new HashMap<Pair<IBox<?>, ?>, IBox<Boolean>>
 	// standard operation implemented using select and notEmpty
 	def <E> includes(IBox<E> it, E e) {
-		select[it === e].notEmpty
+		includesCache.computeIfAbsent(it -> e)[
+			key.select[it === e].notEmpty
+		]
 	}
 }
