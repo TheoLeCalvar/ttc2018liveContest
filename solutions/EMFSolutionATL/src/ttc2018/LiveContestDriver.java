@@ -146,11 +146,15 @@ public class LiveContestDriver {
     		iterationStr = Integer.toString(iteration);
     	}
         System.out.println(String.format("%s;%s;%s;%s;%s;%s;Time;%s", Tool, Query, ChangeSet, RunIndex, iterationStr, phase.toString(), Long.toString(stopwatch)));
-        Runtime.getRuntime().gc();
-        Runtime.getRuntime().gc();
-        Runtime.getRuntime().gc();
-        Runtime.getRuntime().gc();
-        Runtime.getRuntime().gc();
+	if("true".equals(System.getenv("NoGC"))) {
+		// nothing to do
+	} else {
+		Runtime.getRuntime().gc();
+		Runtime.getRuntime().gc();
+		Runtime.getRuntime().gc();
+		Runtime.getRuntime().gc();
+		Runtime.getRuntime().gc();
+	}
         long memoryUsed = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         System.out.println(String.format("%s;%s;%s;%s;%s;%s;Memory;%s", Tool, Query, ChangeSet, RunIndex, iterationStr, phase.toString(), Long.toString(memoryUsed)));
         if (result != null)
