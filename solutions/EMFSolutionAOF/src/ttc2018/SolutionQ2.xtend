@@ -58,12 +58,13 @@ class SolutionQ2 extends Solution implements AOFExtensions {
 		// DONE: create an active operation that listens to a bunch of boxes, and recomputes completely if one these boxes changes, whatever the change
 		// this would enable coarse-grained incrementality where necessary
 		return scoreByComment.get(c) ?: {
-/*			// memory-hungry fine-grained incremental version
+//*			// memory-hungry fine-grained incremental version
 			val s = c._likedBy
 					 .connectedComponents[u |
-						u._friends.selectMutable[f |
-							f._likes.select[it == c].notEmpty
-						]
+//						u._friends.selectMutable[f |
+//							f._likes.select[it == c].notEmpty
+//						]
+						u._friends.intersection(c._likedBy)
 					].collectMutable[it?.size?.square ?: emptyOne].sum
 /*/			// memory-frugal coarse-grained incremental version
 			val s = new OpaqueOperation[
@@ -86,8 +87,13 @@ class SolutionQ2 extends Solution implements AOFExtensions {
 		new ConnectedComponents(it, accessor).result
 	}
 
-	def square(IBox<Integer> it) {
-		collect[it * it]
+	def <E> intersection(IBox<E> it, IBox<E> o) {
+		new Intersection(it, o).result
+	}
+
+	val squareCache = new HashMap<IBox<Integer>, IBox<Integer>>
+	def square(IBox<Integer> source) {
+		squareCache.computeIfAbsent(source)[collect[it * it]]
 	}
 
 	def -(IBox<Integer> it) {
