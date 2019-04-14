@@ -1,5 +1,5 @@
 plugins {
-  id "org.xtext.xtend" version "2.0.4"
+	id "org.xtext.xtend" version "2.0.4"
 }
 
 repositories {
@@ -10,16 +10,16 @@ repositories {
 	}
 }
 
-	dependencies {
-		// TODO: replace dependency to EMFSolutionTemplate's solution.jar by dependencies to appropriate EMF plugins
-		compile name: 'solution'
-//		compile 'org.eclipse.emf:org.eclipse.emf.ecore:2.15.0'
-//		compile 'org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.15.0'
-//		compile 'org.eclipse.emf:org.eclipse.emf.common:2.15.0'
+dependencies {
+	// TODO: replace dependency to EMFSolutionTemplate's solution.jar by dependencies to appropriate EMF plugins
+	compile name: 'solution'
+//	compile 'org.eclipse.emf:org.eclipse.emf.ecore:2.15.0'
+//	compile 'org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.15.0'
+//	compile 'org.eclipse.emf:org.eclipse.emf.common:2.15.0'
 
-		compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.12.0'
- 		compile 'org.eclipse.xtext:org.eclipse.xtext.xbase.lib:2.12.0'
-	}
+	compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.12.0'
+	compile 'org.eclipse.xtext:org.eclipse.xtext.xbase.lib:2.12.0'
+}
 
 apply plugin: 'eclipse'
 apply plugin: 'java'
@@ -45,3 +45,4 @@ sourceSets {
 		}
 	}
 }
+
