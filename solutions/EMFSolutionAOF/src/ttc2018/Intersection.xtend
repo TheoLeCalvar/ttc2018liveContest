@@ -7,6 +7,7 @@ import java.util.HashSet
 import org.eclipse.papyrus.aof.core.impl.utils.DefaultObserver
 import org.eclipse.xtend.lib.annotations.Data
 
+// WARNING: the current version assumes that source and other boxes are Sets
 class Intersection<E> extends Operation<E> {
 	val IBox<E> source
 	val Set<E> sourceSet

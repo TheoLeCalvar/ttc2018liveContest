@@ -1,5 +1,5 @@
 -- @atlcompiler emftvm
--- @path SN=/socialmedia/social_network.ecore
+-- @path SN=/EMFSolutionATL/social_network.ecore
 library Q1;
 
 helper context SN!SocialNetworkRoot def: topPosts : Collection(String) =

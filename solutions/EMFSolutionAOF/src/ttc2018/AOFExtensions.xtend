@@ -28,4 +28,20 @@ interface AOFExtensions {
 	def <E> sortedBy(IBox<E> b, IUnaryFunction<E, IBox<? extends Comparable<?>>>...bodies) {
 		new SortedBy(b, bodies as IUnaryFunction<?, ?>[] as IUnaryFunction<E, IOne<? extends Comparable<?>>>[]).result
 	}
+
+	def <E> intersection(IBox<E> it, IBox<E> o) {
+		new Intersection(it, o).result
+	}
+
+	def <E> connectedComponents(IBox<E> it, IUnaryFunction<E, IBox<E>> accessor) {
+		new ConnectedComponents(it, accessor).result
+	}
+
+	val includesCache = new HashMap<Pair<IBox<?>, ?>, IBox<Boolean>>
+	// standard operation implemented using select and notEmpty
+	def <E> includes(IBox<E> it, E e) {
+		includesCache.computeIfAbsent(it -> e)[
+			key.select[it === e].notEmpty
+		]
+	}
 }

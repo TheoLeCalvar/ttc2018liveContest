@@ -55,10 +55,8 @@ class SolutionQ2 extends Solution implements AOFExtensions {
 	
 	val scoreByComment = new HashMap<Comment, IOne<Integer>>
 	def computeScore(Comment c) {
-		// DONE: create an active operation that listens to a bunch of boxes, and recomputes completely if one these boxes changes, whatever the change
-		// this would enable coarse-grained incrementality where necessary
 		return scoreByComment.get(c) ?: {
-//*			// memory-hungry fine-grained incremental version
+//*			// more memory-hungry fine-grained incremental version
 			val s = c._likedBy
 					 .connectedComponents[u |
 //						u._friends.selectMutable[f |
@@ -66,7 +64,9 @@ class SolutionQ2 extends Solution implements AOFExtensions {
 //						]
 						u._friends.intersection(c._likedBy)
 					].collectMutable[it?.size?.square ?: emptyOne].sum
-/*/			// memory-frugal coarse-grained incremental version
+/*/			// more memory-frugal coarse-grained incremental version
+			// DONE: create an active operation that listens to a bunch of boxes, and recomputes completely if one these boxes changes, whatever the change
+			// this would enable coarse-grained incrementality where necessary
 			val s = new OpaqueOperation[
 				val layering = new Layering[User u | u.friends.filter[likes.contains(c)]]
 				val comps = layering.CreateLayers(c.likedBy)
@@ -81,14 +81,6 @@ class SolutionQ2 extends Solution implements AOFExtensions {
 //			println('''«c.id» : «s.get»''')
 			s
 		}
-	}
-
-	def <E> connectedComponents(IBox<E> it, IUnaryFunction<E, IBox<E>> accessor) {
-		new ConnectedComponents(it, accessor).result
-	}
-
-	def <E> intersection(IBox<E> it, IBox<E> o) {
-		new Intersection(it, o).result
 	}
 
 	val squareCache = new HashMap<IBox<Integer>, IBox<Integer>>

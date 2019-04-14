@@ -9,6 +9,7 @@ import org.eclipse.papyrus.aof.core.impl.operation.Operation
 import org.eclipse.papyrus.aof.core.impl.utils.DefaultObserver
 
 // WARNING: propagation does not preserve order
+// And removal is not implemented yet, because it was not necessary for the TTC2018 live contest
 class ConnectedComponents<E> extends Operation<ISet<E>> {
 	// in : IBox<E>
 	// out : ISet<ISet<E>>

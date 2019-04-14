@@ -23,12 +23,6 @@ class SolutionQ1 extends Solution implements AOFExtensions {
 	var IBox<Post> posts
 
 	override String Initial() {
-		// the following line is slow because it copies the posts property into a box (at least O(n)), which is unique
-		// (therefore actually O(n²) because ListDelegate.assign calls contains on each element)
-		// having this line here prevents its re-computation on many computeScore calls.
-		// property accessor return values are cached, but can be garbage collected, which was happening
-		// TODO: make this line faster, e.g., by not checking contains on every element, since we already know their cannot
-		// be duplicates, or (better) by not using a proxy box in ListFeatureDelegate 
 		posts = socialNetwork._posts
 
 		result = queryQ1
