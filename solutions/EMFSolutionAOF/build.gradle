@@ -5,14 +5,16 @@ plugins {
 repositories {
 	mavenCentral()
 	flatDir {
-		dirs 'libs'
+		dirs	'libs',
+			// generated code for the SocialNetwork metamodel must be imported so that our AOFAccessors active annotation can work
+			"../EMFSolutionTemplate"   // TODO: change relative folder dependency to EMFSolutionTemplate into a project dependency?
 	}
 }
 
 dependencies {
 	compile name: 'aof'
+	compile name: 'solution'
 	compile 'org.eclipse.xtend:org.eclipse.xtend.lib:2.12.0'
-	compile 'org.eclipse.xtext:org.eclipse.xtext.xbase.lib:2.12.0'
 }
 
 apply plugin: 'eclipse'

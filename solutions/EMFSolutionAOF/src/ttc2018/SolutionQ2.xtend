@@ -9,7 +9,6 @@ import java.util.HashMap
 import org.eclipse.emf.common.util.EList
 import org.eclipse.papyrus.aof.core.IBox
 import org.eclipse.papyrus.aof.core.IOne
-import org.eclipse.papyrus.aof.core.IUnaryFunction
 
 import static extension ttc2018.AllContents.*
 

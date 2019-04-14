@@ -1,5 +1,6 @@
 package ttc2018
 
+import java.util.HashMap
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.papyrus.aof.core.IBox
 import org.eclipse.papyrus.aof.core.IMetaClass
